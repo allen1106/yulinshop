@@ -1,13 +1,24 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="header">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+    <swiper-item wx:for="{{background}}" wx:key="*this">
+      <view class="swiper-item">
+        <image src="/image/index/{{item}}.png"></image>
+      </view>
+    </swiper-item>
+  </swiper>
+  <search-input searchHandler="{{searchHandler}}" my-class="page-item"></search-input>
+</view>
+<view class="main">
+  <view class="type-menu panel">
+    <view wx:for="{{typeList}}" wx:key="item" class="type-item" data-id="{{item.id}}" bindtap="navigateItemList">
+      <image src="/image/index/{{item.img}}.png"></image>
+      <text>{{item.text}}</text>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="title panel">产品推荐</view>
+  <view class="recommend panel">
+    <view wx:for="{{recommendList}}" wx:key="item" class="recommend-item">
+      <image src="{{item.img}}"></image>
+    </view>
   </view>
 </view>

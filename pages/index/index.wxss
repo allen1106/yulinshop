@@ -1,21 +1,84 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
+.header {
+  height: 300rpx;
+  background-color: #00A4FF;
+  position: relative;
+}
+
+swiper {
+  width: 90%;
+  height: 250rpx;
+  margin: 0 auto;
+}
+
+swiper image {
+  width: 100%;
+  height: 250rpx;
+}
+
+.page-item {
+  position: absolute;
+  bottom: -34rpx;
+  left: 5%;
+  width: 90%;
+}
+
+.main {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 34rpx;
+}
+
+.main .panel {
+  width: 100%;
+  margin-top: 20rpx;
+  border-radius: 15rpx;
+  background-color: #fff;
+}
+
+.type-menu {
+  height: 240rpx;
+}
+
+.type-menu .type-item {
+  display: inline-flex;
   flex-direction: column;
+  width: 20%;
+  height: 50%;
+  justify-content: center;
   align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+.type-menu image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.type-menu text {
+  font-size: 20rpx;
+}
+
+.title {
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.recommend {
+  height: 400rpx;
+}
+
+.recommend-item {
+  display: inline-flex;
+  flex-direction: column;
+  width: 33.33%;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.recommend-item image {
   margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+  width: calc(100% - 20rpx);
+  height: calc(100% - 20rpx);
 }

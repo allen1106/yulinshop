@@ -1,0 +1,21 @@
+<!--components/searchInput/search.wxml-->
+<view class="my-class">
+  <view class="header">
+    <view class="left">张三***</view>
+    <view class="tag-wrapper right">
+      <text>特价</text>
+      <text>处理</text>
+      <text>9成新</text>
+    </view>
+  </view>
+  <view class="title">产品标题产品标题</view>
+  <view class="detail">产品详细介绍产品详细介绍产品详细介绍产品详细介绍产品详细介绍产品详细介绍</view>
+  <view class="price">500元</view>
+  <view class="img-wrapper">
+    <image src=""></image>
+    <image src=""></image>
+    <image src=""></image>
+    <image src=""></image>
+    <image src=""></image>
+  </view>
+</view>

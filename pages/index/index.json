@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "search-input": "/components/search-input/search-input"
+  },
+  "navigationBarTitleText": "驼城好物"
 }

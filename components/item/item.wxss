@@ -1,0 +1,24 @@
+/* components/searchInput/search.wxss */
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.header {
+  height: 50rpx;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tag-wrapper {
+  height: 30rpx;
+  margin-left: 5rpx;
+  font-size: 15rpx;
+}
+
+.search-input input {
+  width: calc(100% - 180rpx);
+  font-size: 28rpx;
+  text-align: center;
+}

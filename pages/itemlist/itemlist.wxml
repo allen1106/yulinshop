@@ -1,0 +1,9 @@
+<!--pages/itemlist/itemlist.wxml-->
+<view class="header">
+  <search-input searchHandler="{{searchHandler}}" my-class="page-item"></search-input>
+</view>
+<view class="main">
+  <view class="item-list">
+    <item my-class="item-wrapper"></item>
+  </view>
+</view>
