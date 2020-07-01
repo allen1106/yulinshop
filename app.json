@@ -1,8 +1,11 @@
 {
   "pages": [
-    "pages/itemlist/itemlist",
+    "pages/personal/personal",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/itemlist/itemlist",
+    "pages/postitem/postitem",
+    "pages/logs/logs",
+    "pages/buyitem/buyitem"
   ],
   "tabBar": {
     "custom": true,
@@ -12,16 +15,25 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
+        "color": "#7A7E83",
+        "selectedColor": "#3cc51f",
         "pagePath": "pages/index/index",
-        "iconPath": "image/icon_component.png",
-        "selectedIconPath": "image/icon_component_HL.png",
-        "text": "组件"
+        "withIcon": false,
+        "text": "大厅"
       },
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
-        "text": "接口"
+        "color": "#fff",
+        "selectedColor": "#3cc51f",
+        "pagePath": "pages/postitem/postitem",
+        "withIcon": true,
+        "text": "发布"
+      },
+      {
+        "color": "#7A7E83",
+        "selectedColor": "#3cc51f",
+        "pagePath": "pages/personal/personal",
+        "withIcon": false,
+        "text": "我的"
       }
     ]
   },
@@ -32,5 +44,10 @@
     "navigationBarTextStyle": "white"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
 }

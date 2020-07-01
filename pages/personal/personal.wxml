@@ -1,0 +1,44 @@
+<!--pages/personal/personal.wxml-->
+<view class="header">
+  <view class="info-wrapper">
+    <image class="headimg" src="/image/personal/fas-fa-user.svg"></image>
+    <text>用户名</text>
+  </view>
+  <view class="balance-wrapper">
+    <view>
+      <text class="cor-white">我的余额</text>
+      <text class="cor-gray">已体现</text>
+    </view>
+    <view>
+      <text class="cor-white">1000元</text>
+      <text class="cor-gray">100元</text>
+    </view>
+  </view>
+</view>
+<view class="main">
+  <view class="menu-wrapper">
+    <view class="row-item">
+      <view>
+        <text>我的发布</text>
+        <text>10</text>
+      </view>
+      <view>
+        <text>我买到的</text>
+        <text>10</text>
+      </view>
+    </view>
+    <view class="row-item">
+      <view>
+        <text>我的卖出</text>
+        <text>10</text>
+      </view>
+      <view>
+        <text>我的收藏</text>
+        <text>10</text>
+      </view>
+    </view> 
+  </view>
+  <button class="btn-item blue-bg">订单管理</button>
+  <button class="btn-item orange-bg">申请体现</button>
+  <button class="btn-item gray-bg">联系客服</button>
+</view>

@@ -9,16 +9,62 @@
   height: 50rpx;
   margin: 0 auto;
   width: 100%;
+  font-size: 24rpx;
 }
 
-.tag-wrapper {
-  height: 30rpx;
-  margin-left: 5rpx;
-  font-size: 15rpx;
+.content-panel {
+  width: 90%;
+  margin: 0 auto;
 }
 
-.search-input input {
-  width: calc(100% - 180rpx);
+.title {
   font-size: 28rpx;
-  text-align: center;
+}
+
+.detail {
+  font-size: 20rpx;
+  color: rgba(16, 16, 16, 1);
+}
+
+.price {
+  margin: 10rpx 0;
+  color: #FF0000;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.img-wrapper {
+  width: 100%;
+}
+
+.img-wrapper image {
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.btn-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.btn-wrapper button {
+  float: right;
+  padding: 0;
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 10rpx;
+  font-size: 22rpx;
+  color: #fff;
+  margin-left: 10rpx;
+}
+
+.orange-btn {
+  background-color: #FF7100;
+}
+
+.green-btn {
+  background-color: #32B317;
 }

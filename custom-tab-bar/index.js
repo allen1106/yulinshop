@@ -4,19 +4,19 @@ Component({
     list: [{
       color: "#7A7E83",
       selectedColor: "#3cc51f",
-      pagePath: "/index/index",
+      pagePath: "/pages/index/index",
       withIcon: false,
       text: "大厅"
     }, {
       color: "#fff",
       selectedColor: "#3cc51f",
-      pagePath: "/index/index",
+      pagePath: "/pages/postitem/postitem",
       withIcon: true,
       text: "发布"
     },{
       color: "#7A7E83",
       selectedColor: "#3cc51f",
-      pagePath: "/index/index2",
+      pagePath: "/pages/personal/personal",
       withIcon: false,
       text: "我的"
     }]

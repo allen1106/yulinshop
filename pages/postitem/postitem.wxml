@@ -1,0 +1,29 @@
+<!--pages/postitem/postitem.wxml-->
+<view class="page-wrapper">
+  <view class="form-wrapper">
+    <input placeholder="输入物品名称"></input>
+    <textarea placeholder="输入介绍"></textarea>
+    <view class="img-upload-container">
+      <view class="img-preview-container" wx:for="{{imgList}}" wx:key="index">
+        <image class="img-preview" src="{{imgList[index]}}" data-src="{{imgList[index]}}" bindtap="previewImage"></image>
+        <image class="img-close" src="/image/post/close.png" bindtap="delImg" data-src="{{imgList[index]}}"></image>
+      </view>
+      <view class="img-preview-container choose-wrapper" bindtap="chooseImage">
+        <image class="img-preview" src="/image/post/fas-fa-plus.svg"></image>
+      </view>
+    </view>
+    <view class="inline" >
+      <input placeholder="输入价格"></input>
+      <input placeholder="输入数量"></input>
+    </view>
+    <input placeholder="联系电话"></input>
+    <input placeholder="输入地址"></input>
+    <button class="btn-loc" bindtap="bindGetLoc">点击获取我的位置</button>
+    <view class="label">选择标签：</view>
+    <view class="tag-container">
+      <text wx:for="{{tagList}}" wx:key="item" data-idx="{{index}}" style="color: #fff;background-color: {{item.bg_color}}" wx:if="{{item.checked}}" bindtap="bindCheckTag">{{item.name}}</text>
+      <text wx:for="{{tagList}}" wx:key="item" data-idx="{{index}}" style="color: {{item.bg_color}};background-color: rgba(0,0,0,.1);" wx:if="{{!item.checked}}" bindtap="bindCheckTag">{{item.name}}</text>
+    </view>
+    <button class="btn-post" form-type="submit">确认发布</button>
+  </view>
+</view>
