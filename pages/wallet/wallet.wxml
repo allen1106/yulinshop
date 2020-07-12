@@ -1,0 +1,42 @@
+<!--pages/wallet/wallet.wxml-->
+<view class="header">
+  <view class="balance-wrapper" bindtap="navigateToWallet">
+    <view>
+      <text class="cor-white">我的余额</text>
+      <text class="cor-gray">已体现</text>
+    </view>
+    <view>
+      <text class="cor-white">1000元</text>
+      <text class="cor-gray">100元</text>
+    </view>
+  </view>
+  <button class="btn-submit">申请提现</button>
+</view>
+<view class="divider"></view>
+<view class="main">
+  <view class="show-title">收支明细</view>
+  <view class="show-panel">
+    <view class="table">
+      <view class="tr">
+        <view class="td">记录</view>
+        <view class="td">金额</view>
+        <view class="td">日期</view>
+      </view>
+      <view class="tr">
+        <view class="td">提现</view>
+        <view class="td">100元</view>
+        <view class="td">2020-07-02</view>
+      </view>
+      <view class="tr">
+        <view class="td">提现</view>
+        <view class="td">100元</view>
+        <view class="td">2020-07-03</view>
+      </view>
+      <view class="tr">
+        <view class="td">提现</view>
+        <view class="td">10000元</view>
+        <view class="td">2020-07-05</view>
+      </view>
+    </view>
+  </view>
+</view>
