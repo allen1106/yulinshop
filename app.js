@@ -1,4 +1,6 @@
 //app.js
+var api = require("/utils/api.js")
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -32,8 +34,19 @@ App({
         }
       }
     })
+    // 获取元数据信息
+    // 获取tag列表
+    var that = this
+    api.phpRequest({
+      url: 'label.php',
+      success: function (res) {
+        var tagList = res.data
+        that.globalData.tagList = tagList
+      }
+    })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    tagList: null
   }
 })

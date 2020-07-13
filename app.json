@@ -1,11 +1,16 @@
 {
   "pages": [
-    "pages/personal/personal",
     "pages/index/index",
+    "pages/personal/personal",
     "pages/itemlist/itemlist",
     "pages/postitem/postitem",
     "pages/logs/logs",
-    "pages/buyitem/buyitem"
+    "pages/buyitem/buyitem",
+    "pages/item/item",
+    "pages/login/login",
+    "pages/collect/collect",
+    "pages/postlist/postlist",
+    "pages/order/order"
   ],
   "tabBar": {
     "custom": true,
@@ -15,35 +20,26 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "color": "#7A7E83",
-        "selectedColor": "#3cc51f",
         "pagePath": "pages/index/index",
-        "withIcon": false,
         "text": "大厅"
       },
       {
-        "color": "#fff",
-        "selectedColor": "#3cc51f",
         "pagePath": "pages/postitem/postitem",
-        "withIcon": true,
         "text": "发布"
       },
       {
-        "color": "#7A7E83",
-        "selectedColor": "#3cc51f",
         "pagePath": "pages/personal/personal",
-        "withIcon": false,
         "text": "我的"
       }
     ]
   },
+  "usingComponents": {},
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00A4FF",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "white"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {

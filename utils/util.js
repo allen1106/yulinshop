@@ -14,6 +14,14 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const getTagList = (tagstr, tagList) => {
+  var ret = []
+  if (!tagstr) return ret
+  var tags = tagstr.split(',')
+  return tagList.filter(x => tags.indexOf(x["name"]) != -1)
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  getTagList: getTagList
 }

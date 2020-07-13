@@ -1,0 +1,12 @@
+<!--components/flatitem/flatitem.wxml-->
+<view class="my-class">
+  <view class="content-panel" bindtap="_navigateToItemDetail" data-id="{{itemInfo.id}}">
+    <view class="img-wrapper">
+      <image src="{{itemInfo.img}}"></image>
+    </view>
+    <view class="text-wrapper">
+      <view class="title">{{itemInfo.name}}</view>
+      <view class="co-red">{{itemInfo.price}}元</view>
+    </view>
+  </view>
+</view>

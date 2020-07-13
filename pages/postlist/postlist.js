@@ -1,4 +1,4 @@
-// pages/wallet/wallet.js
+// pages/postlist/postlist.js
 var api = require("../../utils/api.js")
 
 Page({
@@ -7,15 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: null,
-    withdrawList: null
+    key: '',
+    itemList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var key = options.key
+    this.setData({
+      key: key || this.data.key
+    })
   },
 
   /**
@@ -23,24 +26,18 @@ Page({
    */
   onShow: function () {
     var that = this
-    // 获取用户账户信息
+    // 检索发布列表
+    var data = {
+      'userid': wx.getStorageSync('userId'),
+      'page': 1
+    }
+    if (that.data.key) {data['key'] = that.data.key}
     api.phpRequest({
-      url: 'info.php',
-      data: {
-        userid: wx.getStorageSync('userId')
-      },
+      url: 'my_products.php',
+      data: data,
       success: function (res) {
         that.setData({
-          userInfo: res.data
-        })
-      }
-    })
-    // 获取提现列表
-    api.phpRequest({
-      url: 'withdrawallist.php',
-      success: function (res) {
-        that.setData({
-          withdrawList: res.data
+          itemList: res.data,
         })
       }
     })

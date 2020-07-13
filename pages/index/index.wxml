@@ -2,7 +2,7 @@
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
     <swiper-item wx:for="{{background}}" wx:key="*this">
       <view class="swiper-item">
-        <image src="/image/index/{{item}}.png"></image>
+        <image src="{{host}}{{item.img}}"></image>
       </view>
     </swiper-item>
   </swiper>
@@ -10,15 +10,16 @@
 </view>
 <view class="main">
   <view class="type-menu panel">
-    <view wx:for="{{typeList}}" wx:key="item" class="type-item" data-id="{{item.id}}" bindtap="navigateItemList">
-      <image src="/image/index/{{item.img}}.png"></image>
-      <text>{{item.text}}</text>
+    <view wx:for="{{typeList}}" wx:key="item" class="type-item" data-id="{{item.cid}}" bindtap="navigateItemList">
+      <image src="{{host}}{{item.img}}"></image>
+      <text>{{item.name}}</text>
     </view>
   </view>
   <view class="title panel">产品推荐</view>
   <view class="recommend panel">
     <view wx:for="{{recommendList}}" wx:key="item" class="recommend-item">
-      <image src="{{item.img}}"></image>
+      <image src="{{host}}{{item.img}}" data-id="{{item.id}}"></image>
     </view>
   </view>
 </view>
+<!-- <tab-bar></tab-bar> -->

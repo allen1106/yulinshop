@@ -68,3 +68,10 @@
 .green-btn {
   background-color: #32B317;
 }
+
+.tag-wrapper text {
+  display: inline-block;
+  margin: 5rpx;
+  padding: 5rpx 20rpx;
+  font-size: 20rpx;
+}

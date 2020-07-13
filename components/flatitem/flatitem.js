@@ -1,4 +1,4 @@
-// components/searchInput/search.js
+// components/flatitem/flatitem.js
 var api = require("../../utils/api.js")
 
 Component({
@@ -14,10 +14,6 @@ Component({
     bindTap: {
       type: Number,
       value: null,
-    },
-    isClient: {
-      type: Number,
-      value: null,
     }
   },
 
@@ -27,26 +23,7 @@ Component({
   data: {
     itemInfo: null,
     bindTap: null,
-    isClient: 0,
-    list: [{
-      color: "#7A7E83",
-      selectedColor: "#3cc51f",
-      pagePath: "/pages/index/index",
-      withIcon: false,
-      text: "大厅"
-    }, {
-      color: "#fff",
-      selectedColor: "#3cc51f",
-      pagePath: "/pages/postitem/postitem",
-      withIcon: true,
-      text: "发布"
-    },{
-      color: "#7A7E83",
-      selectedColor: "#3cc51f",
-      pagePath: "/pages/personal/personal",
-      withIcon: false,
-      text: "我的"
-    }]
+    host: api.HTTP_HOST
   },
 
   /**
@@ -79,7 +56,7 @@ Component({
     _bindPurchase: function (e) {
       var that = this
       api.phpRequest({
-        url: 'buy.php',
+        url: 'purchase.php',
         data: {
           goods_id: that.data.itemInfo.id,
           userid: wx.getStorageSync('userId')

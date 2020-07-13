@@ -1,7 +1,7 @@
 /* pages/postitem/postitem.wxss */
 .page-wrapper {
   width: 90%;
-  margin: 20rpx auto;
+  margin: 20rpx auto 100rpx;
   padding: 30rpx 0;
   background-color: #fff;
 }

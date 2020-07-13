@@ -1,10 +1,10 @@
-<!--pages/itemlist/itemlist.wxml-->
+<!--pages/postlist/postlist.wxml-->
 <view class="header">
   <search-input searchHandler="{{searchHandler}}" my-class="page-item" searchWords="{{key}}"></search-input>
 </view>
 <view class="main">
   <view class="item-list" wx:for="{{itemList}}" wx:key="item">
-    <item my-class="item-wrapper" itemInfo="{{item}}" bindTap="1" isClient="1"></item>
+    <item my-class="item-wrapper" itemInfo="{{item}}" bindTap="1" isClient="0"></item>
   </view>
 </view>
 <!-- <tab-bar></tab-bar> -->
