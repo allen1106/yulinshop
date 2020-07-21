@@ -5,12 +5,15 @@
     "pages/itemlist/itemlist",
     "pages/postitem/postitem",
     "pages/logs/logs",
-    "pages/buyitem/buyitem",
     "pages/item/item",
     "pages/login/login",
+    "pages/buyitem/buyitem",
     "pages/collect/collect",
     "pages/postlist/postlist",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/orderdetail/orderdetail",
+    "pages/selldetail/selldetail",
+    "pages/edititem/edititem"
   ],
   "tabBar": {
     "custom": true,

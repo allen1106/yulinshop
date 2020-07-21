@@ -11,4 +11,5 @@
 
 page {
   background-color: #EEEEEE;
+  padding-bottom: 120rpx;
 }

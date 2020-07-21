@@ -21,7 +21,31 @@ const getTagList = (tagstr, tagList) => {
   return tagList.filter(x => tags.indexOf(x["name"]) != -1)
 }
 
+const navToOrderDetail = (e) => {
+  var id = e.currentTarget.dataset.id
+  wx.navigateTo({
+    url: '/pages/orderdetail/orderdetail?id=' + id
+  })
+}
+
+const navToSellDetail = (e) => {
+  var id = e.currentTarget.dataset.id
+  wx.navigateTo({
+    url: '/pages/selldetail/selldetail?id=' + id
+  })
+}
+
+const navToItemDetail = (e) => {
+  var id = e.currentTarget.dataset.id
+  wx.navigateTo({
+    url: '/pages/item/item?id=' + id
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
-  getTagList: getTagList
+  getTagList: getTagList,
+  navToOrderDetail: navToOrderDetail,
+  navToSellDetail: navToSellDetail,
+  navToItemDetail: navToItemDetail
 }

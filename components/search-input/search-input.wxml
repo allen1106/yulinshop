@@ -2,6 +2,6 @@
 <view class="my-class">
   <view class="search-input">
     <image class="icon-search" src="/image/search-input/ci-yqi-search.svg "></image>
-    <input type="text" placeholder="快来搜索你想要的产品吧" value="{{searchWords}}" bindinput="_bindinput" bindconfirm="_bindSearch"></input>
+    <input class="input" type="text" placeholder="快来搜索你想要的产品吧" value="{{searchWords}}" bindinput="_bindinput" bindconfirm="_bindSearch"></input>
   </view>
 </view>

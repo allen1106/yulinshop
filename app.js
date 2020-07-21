@@ -44,9 +44,18 @@ App({
         that.globalData.tagList = tagList
       }
     })
+    // 获取商品分类列表
+    api.phpRequest({
+      url: 'category.php',
+      success: function (res) {
+        var typeList = res.data
+        that.globalData.typeList = typeList
+      }
+    })
   },
   globalData: {
     userInfo: null,
-    tagList: null
+    tagList: null,
+    typeList: null
   }
 })

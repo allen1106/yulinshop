@@ -3,23 +3,23 @@
   <view class="header">
     <view class="left">{{itemInfo.realname}}</view>
     <view class="tag-wrapper right">
-      <text wx:for="{{itemInfo.label}}" wx:key="item" style="color: #fff;background-color: {{item.bg_color}}">{{item.name}}</text>
+      <text class="tag-item" wx:for="{{itemInfo.label}}" wx:key="item" style="color: #fff;background-color: {{item.bg_color}}">{{item.name}}</text>
     </view>
   </view>
-  <view class="content-panel" bindtap="_navigateToItemDetail" data-id="{{itemInfo.id}}">
+  <view class="content-panel" bindtap="_bindTap" data-id="{{itemInfo.id}}">
     <view class="title">{{itemInfo.name}}</view>
     <view class="detail">{{itemInfo.content}}</view>
     <view class="price">{{itemInfo.price}}元</view>
     <view class="img-wrapper">
-      <image wx:for="{{itemInfo.imgs}}" wx:key="{{item}}" src="{{item}}"></image>
+      <image class=".image" wx:for="{{itemInfo.imgs}}" wx:key="item" src="{{item}}" data-src="{{item}}" catchtap="previewImg"></image>
     </view>
   </view>
   <view class="btn-wrapper" wx:if="{{isClient == 1}}">
-    <button class="orange-btn" bindtap="_bindPurchase">购买</button>
-    <button class="green-btn" bindtap="_bindCollect">收藏</button>
+    <button class="button orange-btn" bindtap="_bindPurchase">购买</button>
+    <button class="button green-btn" bindtap="_bindCollect">收藏</button>
   </view>
   <view class="btn-wrapper" wx:if="{{isClient == 0}}">
-    <button class="green-btn" bindtap="_bindDelete">删除</button>
-    <button class="orange-btn" bindtap="_bindEdit">编辑</button>
+    <button class="button green-btn" bindtap="_bindDelete">删除</button>
+    <button class="button orange-btn" bindtap="_bindEdit">编辑</button>
   </view>
 </view>

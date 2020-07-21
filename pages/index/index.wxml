@@ -18,8 +18,10 @@
   <view class="title panel">产品推荐</view>
   <view class="recommend panel">
     <view wx:for="{{recommendList}}" wx:key="item" class="recommend-item">
-      <image src="{{host}}{{item.img}}" data-id="{{item.id}}"></image>
+      <image src="{{item.img}}" data-id="{{item.id}}" bindtap="navigateItemDetail"></image>
     </view>
   </view>
+  <block wx:for="{{latestItemList}}" wx:key="item">
+    <item my-class="item-wrapper" itemInfo="{{item}}" bindTapHandler="{{bindTapHandler}}" isClient="1"></item>
+  </block>
 </view>
-<!-- <tab-bar></tab-bar> -->

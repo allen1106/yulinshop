@@ -11,10 +11,15 @@ Component({
       type: Object,
       value: null
     },
-    bindTap: {
-      type: Number,
+    bindTapHandler: {
+      type: Function,
       value: null,
     },
+    /*
+    * 控制是买家或者卖家
+    * 买家 - 显示‘收藏’和‘购买’按钮
+    * 卖家 - 显示‘编辑’和‘删除’按钮
+    */
     isClient: {
       type: Number,
       value: null,
@@ -26,7 +31,7 @@ Component({
    */
   data: {
     itemInfo: null,
-    bindTap: null,
+    bindTapHandler: null,
     isClient: 0,
     list: [{
       color: "#7A7E83",
@@ -53,7 +58,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    _bindCollect: function () {
+    _bindTap: function (e) {
+      if (this.data.bindTapHandler) {
+        this.data.bindTapHandler(e)
+      }
+    },
+    _bindCollect: function (e) {
       var that = this
       api.phpRequest({
         url: 'collection.php',
@@ -86,9 +96,8 @@ Component({
         },
         success: function (res) {
           if (res.data.status == 1) {
-            wx.showToast({
-              title: '收藏成功',
-              icon: 'success'
+            wx.navigateTo({
+              url: '/pages/buyitem/buyitem?orderid=' + res.data.orderid,
             })
           } else {
             wx.showToast({
@@ -99,13 +108,40 @@ Component({
         }
       })
     },
-    _navigateToItemDetail: function (e) {
-      if (this.data.bindTap) {
-        var id = e.currentTarget.dataset.id
-        wx.navigateTo({
-          url: '/pages/item/item?id=' + id
-        })
-      }
-    }
+    _bindEdit: function (e) {
+      var that = this
+      wx.navigateTo({
+        url: '/pages/edititem/edititem?id=' + that.data.itemInfo.id,
+      })
+    },
+    _bindDelete: function (e) {
+      var that = this
+      api.phpRequest({
+        url: 'product_del.php',
+        method: 'post',
+        header: {'content-type': 'application/x-www-form-urlencoded'},
+        data: {
+          goods_id: that.data.itemInfo.id
+        },
+        success: function (res) {
+          if (res.data.status == 1) {
+            getCurrentPages().pop().onShow()
+          } else {
+            wx.showToast({
+              title: '删除失败，请重试',
+              icon: 'none'
+            })
+          }
+        }
+      })
+    },
+    previewImg: function (e) {
+      var that = this
+      var current = e.target.dataset.src
+      wx.previewImage({
+        current: current,
+        urls: that.data.itemInfo.imgs
+      })
+    },
   }
 })

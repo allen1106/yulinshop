@@ -1,5 +1,7 @@
 // pages/index/index.js
 var api = require("../../utils/api.js")
+var utils = require("../../utils/util.js")
+const app = getApp()
 
 Component({
   pageLifetimes: {
@@ -41,6 +43,21 @@ Component({
           })
         }
       })
+      // 检索商品列表
+      api.phpRequest({
+        url: 'products.php',
+        data: {'page': 1},
+        success: function (res) {
+          for (var i in res.data) {
+            res.data[i].imgs = res.data[i].imgs && res.data[i].imgs.split(',')
+            res.data[i].label = utils.getTagList(res.data[i].label, app.globalData.tagList)
+          }
+          console.log(res.data)
+          that.setData({
+            latestItemList: res.data,
+          })
+        }
+      })
     }
   },
 
@@ -65,6 +82,8 @@ Component({
     typeList: [],
     recommendList: [],
     searchHandler: null,
+    latestItemList: [],
+    bindTapHandler: utils.navToItemDetail
   },
 
   /**
@@ -75,6 +94,13 @@ Component({
       var typeId = e.currentTarget.dataset.id
       wx.navigateTo({
         url: '/pages/itemlist/itemlist?typeId=' + typeId,
+      })
+    },
+
+    navigateItemDetail: function (e) {
+      var id = e.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/pages/item/item?id=' + id,
       })
     },
   

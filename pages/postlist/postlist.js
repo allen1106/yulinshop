@@ -1,5 +1,7 @@
 // pages/postlist/postlist.js
 var api = require("../../utils/api.js")
+var util = require("../../utils/util.js")
+const app = getApp()
 
 Page({
 
@@ -9,12 +11,16 @@ Page({
   data: {
     key: '',
     itemList: [],
+    searchHandler: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      searchHandler: this.searchHandler
+    })
     var key = options.key
     this.setData({
       key: key || this.data.key
@@ -25,56 +31,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.fetchItemList()
+  },
+  searchHandler: function (searchWords) {
+    this.setData({
+      key: searchWords.trim()
+    }, this.fetchItemList)
+  },
+  fetchItemList: function () {
     var that = this
     // 检索发布列表
     var data = {
-      'userid': wx.getStorageSync('userId'),
-      'page': 1
+      'userid': wx.getStorageSync('userId')
     }
     if (that.data.key) {data['key'] = that.data.key}
     api.phpRequest({
       url: 'my_products.php',
       data: data,
       success: function (res) {
+        for (var i in res.data) {
+          res.data[i].label = util.getTagList(res.data[i].label, app.globalData.tagList)
+          res.data[i].imgs = res.data[i].imgs && res.data[i].imgs.split(',')
+        }
         that.setData({
           itemList: res.data,
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

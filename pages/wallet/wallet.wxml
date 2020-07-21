@@ -22,7 +22,7 @@
         <view class="td">金额</view>
         <view class="td">日期</view>
       </view>
-      <view class="tr" wx:for="{{withdrawList}}" wx:key="{{item}}">
+      <view class="tr" wx:for="{{withdrawList}}" wx:key="item">
         <view class="td">提现</view>
         <view class="td">{{item.money}}元</view>
         <view class="td">{{item.time}}</view>

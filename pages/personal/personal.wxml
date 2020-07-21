@@ -39,6 +39,6 @@
     </view>
   </view>
   <button class="btn-item blue-bg" bindtap="navigateToOrder" data-tab="0">订单管理</button>
-  <button class="btn-item orange-bg" bindtap="navigateToWallet">申请体现</button>
+  <button class="btn-item orange-bg" bindtap="navigateToWallet">申请提现</button>
   <button class="btn-item gray-bg" bindtap="contact">联系客服</button>
 </view>

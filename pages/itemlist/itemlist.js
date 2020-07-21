@@ -11,7 +11,9 @@ Page({
   data: {
     cid: null,
     key: '',
-    itemList: []
+    itemList: [],
+    searchHandler: null,
+    bindTapHandler: utils.navToItemDetail
   },
 
   /**
@@ -25,12 +27,27 @@ Page({
       cid: typeId,
       key: key || that.data.key
     })
+    that.setData({
+      searchHandler: that.searchHandler
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this
+    that.fetchItemList()
+  },
+
+  searchHandler: function (searchWords) {
+    var that = this
+    that.setData({
+      key: searchWords.trim()
+    }, that.fetchItemList)
+  },
+
+  fetchItemList: function () {
     var that = this
     // 检索商品列表
     var data = {'page': 1}
@@ -49,40 +66,5 @@ Page({
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

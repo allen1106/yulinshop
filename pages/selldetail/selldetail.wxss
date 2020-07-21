@@ -1,4 +1,4 @@
-/* pages/buyitem/buyitem.wxss */
+/* pages/selldetail/selldetail.wxss */
 .main {
   width: 90%;
   margin: 20rpx auto;
@@ -33,28 +33,41 @@
   font-size: 28rpx;
 }
 
-.policy-wrapper {
-  width: 60%;
+.detail-wrapper {
+  width: 85%;
   margin: 20rpx auto;
-  padding: 30rpx 20rpx;
-  border: 2rpx solid #E5E5E5;
   font-size: 24rpx;
 }
-.policy-wrapper .title {
+.detail-wrapper view {
   width: 100%;
-  text-align: center;
+  margin-bottom: 20rpx;
   font-size: 28rpx;
 }
 
-.btn-pay:not([size='mini']) {
+.btn-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-wrapper button:not([size='mini']) {
+  flex: 1;
   display: inline-block;
   padding: 0;
-  margin: 30rpx 10% 50rpx;
-  margin-top: 20rpx;
-  width: 80%;
+  margin: 20rpx 10rpx;
   height: 60rpx;
   border-radius: 20rpx;
   color: #fff;
   font-size: 24rpx;
-  background-color:#16BF11;
+}
+
+.bg-orange {
+  background-color: #FF7100;
+}
+.bg-gray {
+  background-color: #BDBDBD;
+}
+.bg-green {
+  background-color: #16BF11;
 }

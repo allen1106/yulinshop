@@ -2,22 +2,22 @@ Component({
   data: {
     selected: 0,
     list: [{
-      // color: "#7A7E83",
-      // selectedColor: "#3cc51f",
+      color: "#7A7E83",
+      selectedColor: "#7A7E83",
       pagePath: "/pages/index/index",
-      // withIcon: false,
+      withIcon: false,
       text: "大厅"
     }, {
-      // color: "#fff",
-      // selectedColor: "#3cc51f",
+      color: "#fff",
+      selectedColor: "#fff",
       pagePath: "/pages/postitem/postitem",
-      // withIcon: true,
+      withIcon: true,
       text: "发布"
     },{
-      // color: "#7A7E83",
-      // selectedColor: "#3cc51f",
+      color: "#7A7E83",
+      selectedColor: "#7A7E83",
       pagePath: "/pages/personal/personal",
-      // withIcon: false,
+      withIcon: false,
       text: "我的"
     }]
   },

@@ -36,7 +36,7 @@ swiper image {
 }
 
 .type-menu {
-  height: 240rpx;
+  height: 300rpx;
 }
 
 .type-menu .type-item {
@@ -49,19 +49,19 @@ swiper image {
 }
 
 .type-menu image {
-  width: 60rpx;
-  height: 60rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .type-menu text {
-  font-size: 20rpx;
+  font-size: 24rpx;
 }
 
 .title {
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .recommend {
@@ -81,4 +81,11 @@ swiper image {
   margin: 20rpx;
   width: calc(100% - 20rpx);
   height: calc(100% - 20rpx);
+}
+
+.item-wrapper {
+  /* height: 80vw; */
+  padding: 20rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
 }

@@ -11,9 +11,9 @@ Component({
       type: Object,
       value: null
     },
-    bindTap: {
-      type: Number,
-      value: null,
+    bindTapHandler: {
+      type: Function,
+      value: null
     }
   },
 
@@ -22,66 +22,17 @@ Component({
    */
   data: {
     itemInfo: null,
-    bindTap: null,
-    host: api.HTTP_HOST
+    host: api.HTTP_HOST,
+    bindTapHandler: null
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    _bindCollect: function () {
-      var that = this
-      api.phpRequest({
-        url: 'collection.php',
-        data: {
-          goods_id: that.data.itemInfo.id,
-          userid: wx.getStorageSync('userId')
-        },
-        success: function (res) {
-          if (res.data.status == 1) {
-            wx.showToast({
-              title: '收藏成功',
-              icon: 'success'
-            })
-          } else {
-            wx.showToast({
-              title: '收藏失败，请重试',
-              icon: 'none'
-            })
-          }
-        }
-      })
-    },
-    _bindPurchase: function (e) {
-      var that = this
-      api.phpRequest({
-        url: 'purchase.php',
-        data: {
-          goods_id: that.data.itemInfo.id,
-          userid: wx.getStorageSync('userId')
-        },
-        success: function (res) {
-          if (res.data.status == 1) {
-            wx.showToast({
-              title: '收藏成功',
-              icon: 'success'
-            })
-          } else {
-            wx.showToast({
-              title: '收藏失败，请重试',
-              icon: 'none'
-            })
-          }
-        }
-      })
-    },
-    _navigateToItemDetail: function (e) {
-      if (this.data.bindTap) {
-        var id = e.currentTarget.dataset.id
-        wx.navigateTo({
-          url: '/pages/item/item?id=' + id
-        })
+    _bindTap: function (e) {
+      if (this.data.bindTapHandler) {
+        this.data.bindTapHandler(e)
       }
     }
   }

@@ -37,7 +37,7 @@
   width: 100%;
 }
 
-.img-wrapper image {
+.img-wrapper .image {
   width: 150rpx;
   height: 150rpx;
   margin-right: 20rpx;
@@ -49,7 +49,7 @@
   overflow: hidden;
 }
 
-.btn-wrapper button {
+.btn-wrapper .button {
   float: right;
   padding: 0;
   width: 120rpx;
@@ -69,7 +69,7 @@
   background-color: #32B317;
 }
 
-.tag-wrapper text {
+.tag-wrapper .tag-item {
   display: inline-block;
   margin: 5rpx;
   padding: 5rpx 20rpx;

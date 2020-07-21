@@ -4,7 +4,6 @@
 </view>
 <view class="main">
   <view class="item-list" wx:for="{{itemList}}" wx:key="item">
-    <item my-class="item-wrapper" itemInfo="{{item}}" bindTap="1" isClient="1"></item>
+    <item my-class="item-wrapper" itemInfo="{{item}}" bindTapHandler="{{bindTapHandler}}" isClient="1"></item>
   </view>
 </view>
-<!-- <tab-bar></tab-bar> -->

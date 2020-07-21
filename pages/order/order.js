@@ -1,5 +1,6 @@
 // pages/order/order.js
 var api = require("../../utils/api.js")
+var util = require("../../utils/util.js")
 
 Page({
 
@@ -7,18 +8,25 @@ Page({
    * 页面的初始数据
    */
   data: {
+    key: '',
+    searchHandler: null,
     arr: ["卖出的", "买到的", "进行中"],
     swiperHeight: "0rpx",
     currentTab: 0,
     sellItemList: [],
     buyItemList: [],
-    pendingItemList: [],
+    pendItemList: [],
+    bindNavToOrderHandler: util.navToOrderDetail,
+    bindNavToSellHandler: util.navToSellDetail
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      searchHandler: this.searchHandler
+    })
     var tabid = options.tabid
     this.setData({
       currentTab: tabid
@@ -35,19 +43,37 @@ Page({
     that.fetchPendingList()
   },
 
+  searchHandler: function (seachWords) {
+    this.setData({
+      key: seachWords.trim()
+    }, () => {
+      this.fetchSellList()
+      this.fetchBuyList()
+      this.fetchPendingList()
+    })
+  },
+
   fetchSellList: function () {
     var that = this
-    that.fetchOrderList(0, (res) => {
-      for (var i in res.data) {
-        res.data[i].img = res.data[i].imgs && res.data[i].imgs.split(',')[0]
-      }
-      that.setData({
-        sellItemList: res.data
-      })
-      if (that.data.currentTab == 0) {
+    var data = {
+      userid: wx.getStorageSync('userId')
+    }
+    if (that.data.key) {data['key'] = that.data.key}
+    api.phpRequest({
+      url: 'selllist.php',
+      data: data,
+      success: (res) => {
+        for (var i in res.data) {
+          res.data[i].img = res.data[i].imgs && res.data[i].imgs.split(',')[0]
+        }
         that.setData({
-          swiperHeight: 220 * res.data.length + "rpx"
+          sellItemList: res.data
         })
+        if (that.data.currentTab == 0) {
+          that.setData({
+            swiperHeight: 220 * res.data.length + "rpx"
+          })
+        }
       }
     })
   },
@@ -77,7 +103,7 @@ Page({
         res.data[i].img = res.data[i].imgs && res.data[i].imgs.split(',')[0]
       }
       that.setData({
-        pendingItemList: res.data
+        pendItemList: res.data
       })
       if (that.data.currentTab == 2) {
         that.setData({
@@ -88,12 +114,14 @@ Page({
   },
 
   fetchOrderList: function (status, fn) {
+    var data = {
+      userid: wx.getStorageSync('userId'),
+      status: status
+    }
+    if (this.data.key) {data['key'] = this.data.key}
     api.phpRequest({
       url: 'orderlist.php',
-      data: {
-        userid: wx.getStorageSync('userId'),
-        status: status
-      },
+      data: data,
       success: fn
     })
   },
@@ -110,7 +138,7 @@ Page({
         lenth = that.data.buyItemList.length
         break;
       case 2:
-        lenth = that.data.pendingItemList.length
+        lenth = that.data.pendItemList.length
         break;
       default:
         break;

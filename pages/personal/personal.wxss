@@ -23,7 +23,7 @@
 
 .info-wrapper text {
   color: #fff;
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .balance-wrapper {
@@ -54,7 +54,7 @@
 
 .cor-white {
   color: #fff;
-  font-size: 28rpx;
+  font-size: 30rpx;
 }
 
 .cor-gray {
@@ -94,7 +94,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 
 .row-item view:nth-child(1) {
@@ -106,10 +106,10 @@
   margin: 0;
   margin-top: 20rpx;
   width: 100%;
-  height: 60rpx;
+  height: 80rpx;
   border-radius: 20rpx;
   color: #fff;
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .blue-bg {
