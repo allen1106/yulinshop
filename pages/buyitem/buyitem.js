@@ -43,6 +43,8 @@ Page({
         userid: wx.getStorageSync('userId'),
         orderid: that.data.orderId
       },
+      method: 'post',
+      header: {'content-type': 'application/x-www-form-urlencoded'},
       success: function (res) {
         let payInfo = res.data
         wx.requestPayment({
@@ -54,6 +56,9 @@ Page({
           success (res) {
             wx.showToast({
               title: '支付成功',
+            })
+            wx.switchTab({
+              url: '/pages/personal/personal',
             })
           },
           fail (res) {

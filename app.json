@@ -13,7 +13,8 @@
     "pages/order/order",
     "pages/orderdetail/orderdetail",
     "pages/selldetail/selldetail",
-    "pages/edititem/edititem"
+    "pages/edititem/edititem",
+    "pages/withdraw/withdraw"
   ],
   "tabBar": {
     "custom": true,

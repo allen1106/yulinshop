@@ -54,14 +54,14 @@ swiper image {
 }
 
 .type-menu text {
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .title {
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 
 .recommend {

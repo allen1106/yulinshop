@@ -11,7 +11,7 @@
     <view class="detail">{{itemInfo.content}}</view>
     <view class="price">{{itemInfo.price}}元</view>
     <view class="img-wrapper">
-      <image class=".image" wx:for="{{itemInfo.imgs}}" wx:key="item" src="{{item}}" data-src="{{item}}" catchtap="previewImg"></image>
+      <image class=".image" wx:for="{{itemInfo.imgs}}" wx:key="index" src="{{itemInfo.imgs[index]}}" data-src="{{index}}" catchtap="previewImg"></image>
     </view>
   </view>
   <view class="btn-wrapper" wx:if="{{isClient == 1}}">
@@ -21,5 +21,15 @@
   <view class="btn-wrapper" wx:if="{{isClient == 0}}">
     <button class="button green-btn" bindtap="_bindDelete">删除</button>
     <button class="button orange-btn" bindtap="_bindEdit">编辑</button>
+  </view>
+  <view style="display: {{showPreview}};" class="preview-container" bindtap="closePreview">
+    <view class="img-wrapper">
+      <image class="image" src="{{itemInfo.imgs[currentIdx]}}"></image>
+    </view>
+    <view class="text-wrapper">
+      <text class="text">{{itemInfo.content}}</text>
+    </view>
+    <image wx:if="{{currentIdx > 0}}" class="img-left" src="/image/iconfont/to-left.svg" catchtap="toLeft"></image>
+    <image wx:if="{{currentIdx < itemInfo.imgs.length - 1}}" class="img-right" src="/image/iconfont/to-right.svg" catchtap="toRight"></image>
   </view>
 </view>

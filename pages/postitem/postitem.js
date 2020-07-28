@@ -10,6 +10,12 @@ Component({
           selected: 0
         })
       }
+      var userId = wx.getStorageSync('userId')
+      if (!userId) {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+      }
     }
   },
 

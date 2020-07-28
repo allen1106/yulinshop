@@ -33,25 +33,8 @@ Component({
     itemInfo: null,
     bindTapHandler: null,
     isClient: 0,
-    list: [{
-      color: "#7A7E83",
-      selectedColor: "#3cc51f",
-      pagePath: "/pages/index/index",
-      withIcon: false,
-      text: "大厅"
-    }, {
-      color: "#fff",
-      selectedColor: "#3cc51f",
-      pagePath: "/pages/postitem/postitem",
-      withIcon: true,
-      text: "发布"
-    },{
-      color: "#7A7E83",
-      selectedColor: "#3cc51f",
-      pagePath: "/pages/personal/personal",
-      withIcon: false,
-      text: "我的"
-    }]
+    showPreview: "none",
+    currentIdx: 0
   },
 
   /**
@@ -136,12 +119,34 @@ Component({
       })
     },
     previewImg: function (e) {
-      var that = this
+      // var that = this
+      // var current = e.target.dataset.src
+      // wx.previewImage({
+      //   current: current,
+      //   urls: that.data.itemInfo.imgs
+      // })
       var current = e.target.dataset.src
-      wx.previewImage({
-        current: current,
-        urls: that.data.itemInfo.imgs
+      this.setData({
+        showPreview: "block",
+        currentIdx: current
       })
     },
+    closePreview: function (e) {
+      this.setData({
+        showPreview: "none"
+      })
+    },
+    toLeft: function (e) {
+      this.setData({
+        currentIdx: this.data.currentIdx - 1
+      })
+    },
+    toRight: function (e) {
+      console.log(this.data.itemInfo.imgs)
+      console.log(this.data.currentIdx + 1)
+      this.setData({
+        currentIdx: this.data.currentIdx + 1
+      })
+    }
   }
 })

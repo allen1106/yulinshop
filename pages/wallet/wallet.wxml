@@ -3,14 +3,14 @@
   <view class="balance-wrapper" bindtap="navigateToWallet">
     <view>
       <text class="cor-white">我的余额</text>
-      <text class="cor-gray">已体现</text>
+      <text class="cor-gray">已提现</text>
     </view>
     <view>
       <text class="cor-white">{{userInfo.money}}元</text>
       <text class="cor-gray">{{userInfo.point}}元</text>
     </view>
   </view>
-  <button class="btn-submit">申请提现</button>
+  <button class="btn-submit" bindtap="navigateToWithdraw">申请提现</button>
 </view>
 <view class="divider"></view>
 <view class="main">

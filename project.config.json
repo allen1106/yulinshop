@@ -7,13 +7,29 @@
 		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
+		"newFeature": true,
 		"coverView": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"compileHotReLoad": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
-	"appid": "wxe4ad4f23de7f5c0c",
+	"appid": "wxefc4f99448f89a53",
 	"projectname": "yulinshop",
 	"debugOptions": {
 		"hidedInDevtools": []
