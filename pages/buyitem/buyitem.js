@@ -57,8 +57,8 @@ Page({
             wx.showToast({
               title: '支付成功',
             })
-            wx.switchTab({
-              url: '/pages/personal/personal',
+            wx.navigateTo({
+              url: '/pages/selldetail/selldetail?id=' + that.data.orderId
             })
           },
           fail (res) {

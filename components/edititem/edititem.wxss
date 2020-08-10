@@ -119,3 +119,17 @@
   padding: 5rpx 20rpx;
   font-size: 20rpx;
 }
+
+.co-blue,
+.checkbox {
+  display: inline-block;
+}
+
+checkbox,
+.checkbox {
+  font-size: 24rpx;
+}
+
+.co-blue {
+  color: blue;
+}

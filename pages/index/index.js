@@ -3,73 +3,9 @@ var api = require("../../utils/api.js")
 var utils = require("../../utils/util.js")
 const app = getApp()
 
-Component({
-  pageLifetimes: {
-    show() {
-      if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 0
-        })
-      }
-      var that = this
-      that.setData({
-        searchHandler: that.searchHandler
-      })
-      // 获取banner图片列表
-      api.phpRequest({
-        url: 'adverlist.php',
-        success: function (res) {
-          that.setData({
-            background: res.data,
-          })
-        }
-      })
-      // 获取商品分类列表
-      api.phpRequest({
-        url: 'category.php',
-        success: function (res) {
-          that.setData({
-            typeList: res.data,
-          })
-        }
-      })
-      // 获取推荐商品列表
-      api.phpRequest({
-        url: 'recommend.php',
-        success: function (res) {
-          that.setData({
-            recommendList: res.data,
-          })
-        }
-      })
-      // 检索商品列表
-      api.phpRequest({
-        url: 'products.php',
-        data: {'page': 1},
-        success: function (res) {
-          for (var i in res.data) {
-            res.data[i].imgs = res.data[i].imgs && res.data[i].imgs.split(',')
-            res.data[i].label = utils.getTagList(res.data[i].label, app.globalData.tagList)
-          }
-          console.log(res.data)
-          that.setData({
-            latestItemList: res.data,
-          })
-        }
-      })
-    }
-  },
-
+Page({
   /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
-
-  /**
-   * 组件的初始数据
+   * 页面的初始数据
    */
   data: {
     host: api.HTTP_HOST,
@@ -87,34 +23,94 @@ Component({
   },
 
   /**
-   * 组件的方法列表
+   * 生命周期函数--监听页面加载
    */
-  methods: {
-    navigateItemList: function (e) {
-      var typeId = e.currentTarget.dataset.id
-      wx.navigateTo({
-        url: '/pages/itemlist/itemlist?typeId=' + typeId,
+  onLoad: function (options) {
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
       })
-    },
-
-    navigateItemDetail: function (e) {
-      var id = e.currentTarget.dataset.id
-      wx.navigateTo({
-        url: '/pages/item/item?id=' + id,
-      })
-    },
-  
-    searchHandler: function (searchWords) {
-      if (!searchWords.trim()) {
-        wx.showToast({
-          icon: 'none',
-          title: '请输入您要搜索的关键字'
-        })
-      } else {
-        wx.navigateTo({
-          url: '/pages/itemlist/itemlist?key=' + searchWords
+    }
+    var that = this
+    that.setData({
+      searchHandler: that.searchHandler
+    })
+    // 获取banner图片列表
+    api.phpRequest({
+      url: 'adverlist.php',
+      success: function (res) {
+        that.setData({
+          background: res.data,
         })
       }
+    })
+    // 获取商品分类列表
+    api.phpRequest({
+      url: 'category.php',
+      success: function (res) {
+        that.setData({
+          typeList: res.data,
+        })
+      }
+    })
+    // 获取推荐商品列表
+    api.phpRequest({
+      url: 'recommend.php',
+      success: function (res) {
+        that.setData({
+          recommendList: res.data,
+        })
+      }
+    })
+    // 检索商品列表
+    api.phpRequest({
+      url: 'products.php',
+      data: {'page': 1},
+      success: function (res) {
+        for (var i in res.data) {
+          res.data[i].imgs = res.data[i].imgs && res.data[i].imgs.split(',')
+          res.data[i].label = utils.getTagList(res.data[i].label, app.globalData.tagList)
+        }
+        console.log(res.data)
+        that.setData({
+          latestItemList: res.data,
+        })
+      }
+    })
+  },
+
+  navigateItemList: function (e) {
+    var typeId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/itemlist/itemlist?typeId=' + typeId,
+    })
+  },
+
+  navigateItemDetail: function (e) {
+    var id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/item/item?id=' + id,
+    })
+  },
+
+  searchHandler: function (searchWords) {
+    if (!searchWords.trim()) {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入您要搜索的关键字'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/itemlist/itemlist?key=' + searchWords
+      })
     }
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })

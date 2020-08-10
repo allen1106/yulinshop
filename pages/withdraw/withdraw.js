@@ -52,7 +52,7 @@ Page({
   },
 
   validateInfo: function (data) {
-    if (!data['money'] || data['money'] < 100 || data["money"] % 100 != 0) return '金额必须为100的倍数'
+    if (!data['money']) return '金额不能为空'
     return 'success'
   },
   
@@ -132,11 +132,6 @@ Page({
             }
           })
         } else if (res.data.status == 2) {
-          wx.showToast({
-            title: '金额必须为100的倍数',
-            icon: 'none'
-          })
-        } else if (res.data.status == 3) {
           wx.showToast({
             title: '余额不足',
             icon: 'none'

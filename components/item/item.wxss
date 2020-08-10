@@ -17,6 +17,14 @@
   margin: 0 auto;
 }
 
+.type {
+  font-size: 28rpx;
+}
+
+.type label {
+  color: #00c0ff;
+}
+
 .title {
   font-size: 32rpx;
 }
@@ -60,6 +68,14 @@
   font-size: 22rpx;
   color: #fff;
   margin-left: 10rpx;
+}
+
+.btn-wrapper .msg {
+  height: 50rpx;
+  line-height: 50rpx;
+  float: left;
+  font-size: 22rpx;
+  color: #949494;
 }
 
 .orange-btn {

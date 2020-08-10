@@ -23,7 +23,7 @@ Component({
   data: {
     itemInfo: null,
     host: api.HTTP_HOST,
-    bindTapHandler: null
+    bindTapHandler: null,
   },
 
   /**

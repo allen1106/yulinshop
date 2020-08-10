@@ -17,7 +17,8 @@ Page({
     buyItemList: [],
     pendItemList: [],
     bindNavToOrderHandler: util.navToOrderDetail,
-    bindNavToSellHandler: util.navToSellDetail
+    bindNavToSellHandler: util.navToSellDetail,
+    statusDescList: ["待支付", "待收货", "退款中", "已退款", "已收货", "已取消"]
   },
 
   /**

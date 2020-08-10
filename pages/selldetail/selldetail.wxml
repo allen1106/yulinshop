@@ -14,7 +14,13 @@
     <view>买方电话：{{orderInfo.phone}}</view>
     <view>买方信誉：</view>
   </view>
-  <view class="btn-wrapper">
+  <view class="btn-wrapper" wx:if="{{orderInfo.status == 3}}">
     <button class="bg-orange" bindtap="bindConfirmRefund">确认退款</button>
+  </view>
+  <view class="btn-wrapper" wx:if="{{orderInfo.status == 4}}">
+    <view class="tipmsg-wrapper">
+      <image src="/image/iconfont/success-refund.svg"></image>
+      <text>退款成功</text>
+    </view>
   </view>
 </view>

@@ -26,7 +26,10 @@ Component({
     lng: null,
     lat: null,
     itemId: null,
-    itemInfo: null
+    itemInfo: null,
+    markers: [],
+    isagree: false,
+    instructions: ''
   },
 
   /**
@@ -39,6 +42,16 @@ Component({
       that.setData({
         typeList: that.data.typeList.concat(app.globalData.typeList),
         tagList: app.globalData.tagList
+      })
+
+      // 发送请求获取客服电话
+      api.phpRequest({
+        url: 'phone.php',
+        success: function (res) {
+          that.setData({
+            instructions: res.data.instructions
+          })
+        }
       })
 
       if (that.data.itemId && !that.data.itemInfo) {
@@ -56,9 +69,11 @@ Component({
                 that.data.typeIdx = i
               }
             }
-            for (var i in that.data.tagList) {
-              if (res.data.label.indexOf(that.data.tagList[i].name) != -1) {
-                that.data.tagList[i].checked = true
+            if (res.data.label) {
+              for (var i in that.data.tagList) {
+                if (res.data.label.indexOf(that.data.tagList[i].name) != -1) {
+                  that.data.tagList[i].checked = true
+                }
               }
             }
             that.setData({
@@ -148,21 +163,21 @@ Component({
       }
       wx.getSetting({
         success: function (res) {
-          wx.getLocation({
-            type: 'gcj02',
-            altitude: true,//高精度定位
-            //定位成功，更新定位结果
+          wx.chooseLocation({
             success (res) {
               that.setData({
                 lng: res.longitude,
-                lat: res.latitude
+                lat: res.latitude,
+                markers: [{
+                  longitude: res.longitude,
+                  latitude: res.latitude
+                }]
               }, () => {
                 wx.showToast({
                   title: '位置获取成功',
                 })
               })
             },
-            //定位失败回调
             fail: function () {
               wx.showModal({
                 title: '警告',
@@ -171,10 +186,9 @@ Component({
                 confirmText: '我知道了'
               })
             },
-            complete: function () {
-              //隐藏定位中信息进度
-              wx.hideLoading()
-            }
+            complete: (res) => {
+              console.log(res)
+            },
           })
         }
       })
@@ -209,6 +223,13 @@ Component({
       if (valid != "success") {
         wx.showToast({
           title: valid + '不能为空',
+          icon: 'none',
+        })
+        return
+      }
+      if (!that.data.isagree) {
+        wx.showToast({
+          title: '请先同意发布条款',
           icon: 'none',
         })
         return
@@ -294,18 +315,23 @@ Component({
         success: function (res) {
           if (res.data.status == 1) {
             wx.showToast({
-              title: '提交成功',
+              title: that.data.instructions || '发布成功',
               icon: 'success',
               success: function () {
-                // 如果是编辑页面则返回上一页，如果是发布则清空数据
-                if (that.data.itemInfo) {
-                  that.clearFormData()
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                } else {
-                  that.clearFormData()
-                }
+                setTimeout(() => {
+                    // 如果是编辑页面则返回上一页，如果是发布则清空数据
+                    if (that.data.itemInfo) {
+                      that.clearFormData()
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    } else {
+                      that.clearFormData()
+                      wx.navigateTo({
+                        url: '/pages/postlist/postlist',
+                      })
+                    }
+                  }, 1500)
               }
             })
           } else {
@@ -329,8 +355,31 @@ Component({
         imgList: [],
         tagList: that.data.tagList,
         typeIdx: 0,
-        itemInfo: null
+        itemInfo: null,
+        isagree: false
       })
+    },
+
+    bindChooseLoc: function (e) {
+      console.log(e)
+    },
+
+    navigateToService: function (e) {
+      wx.navigateTo({
+        url: '/pages/agreement/service',
+      })
+    },
+
+    checkboxChange: function (e) {
+      if (e.detail.value.indexOf('isAgree') != -1) {
+        this.setData({
+          isagree: true
+        })
+      } else {
+        this.setData({
+          isagree: false
+        })
+      }
     }
   }
 })

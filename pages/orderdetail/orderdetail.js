@@ -15,6 +15,7 @@ Page({
      * 3 - 退款申请中，出现提示信息
      * 4 - 退款成功，出现相关提示信息
      * 5 - 取货成功，即交易成功
+     * 6 - 订单超时
      */
     orderInfo: null
   },
@@ -89,7 +90,7 @@ Page({
       url: 'pickup.php',
       data: {
         'userid': wx.getStorageSync('userId'),
-        'orderid': that.data.id
+        'order_id': that.data.id
       },
       success: function (res) {
         if (res.data.status == 1) {
@@ -129,15 +130,28 @@ Page({
             wx.showToast({
               title: '支付成功',
             })
-            wx.switchTab({
-              url: '/pages/personal/personal',
-            })
+            that.onLoad()
           },
           fail (res) {
             wx.showToast({
               title: '支付失败',
             })
           }
+        })
+      }
+    })
+  },
+
+  bindOpenLoc: function () {
+    var that = this
+    wx.getLocation({//获取当前经纬度
+      type: 'wgs84', //返回可以用于wx.openLocation的经纬度，官方提示bug: iOS 6.3.30 type 参数不生效，只会返回 wgs84 类型的坐标信息  
+      success: function (res) {
+        wx.openLocation({//使用微信内置地图查看位置。
+          latitude: Number(that.data.orderInfo.lat),//要去的纬度-地址
+          longitude: Number(that.data.orderInfo.lng),//要去的经度-地址
+          name: '取货地址',
+          address: that.data.orderInfo.address
         })
       }
     })

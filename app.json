@@ -14,7 +14,8 @@
     "pages/orderdetail/orderdetail",
     "pages/selldetail/selldetail",
     "pages/edititem/edititem",
-    "pages/withdraw/withdraw"
+    "pages/withdraw/withdraw",
+    "pages/agreement/service"
   ],
   "tabBar": {
     "custom": true,
