@@ -25,6 +25,10 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id
+    this.init(id)
+  },
+
+  init: function (id) {
     var that = this
     that.setData({
       id: id
@@ -130,7 +134,7 @@ Page({
             wx.showToast({
               title: '支付成功',
             })
-            that.onLoad()
+            that.init(that.data.id)
           },
           fail (res) {
             wx.showToast({

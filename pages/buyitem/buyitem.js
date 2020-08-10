@@ -58,7 +58,7 @@ Page({
               title: '支付成功',
             })
             wx.navigateTo({
-              url: '/pages/selldetail/selldetail?id=' + that.data.orderId
+              url: '/pages/orderdetail/orderdetail?id=' + that.data.orderId
             })
           },
           fail (res) {
