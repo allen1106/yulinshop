@@ -121,6 +121,7 @@ Page({
       method: 'post',
       header: {'content-type': 'application/x-www-form-urlencoded'},
       success: function (res) {
+        console.log(res.data.status)
         if (res.data.status == 1) {
           wx.showToast({
             title: '提现成功',
@@ -134,6 +135,11 @@ Page({
         } else if (res.data.status == 2) {
           wx.showToast({
             title: '余额不足',
+            icon: 'none'
+          })
+        } else if (res.data.status == 3) {
+          wx.showToast({
+            title: '提现失败，您的提现金额超过可提金额',
             icon: 'none'
           })
         } else {

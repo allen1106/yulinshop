@@ -17,7 +17,8 @@ Page({
      * 5 - 取货成功，即交易成功
      * 6 - 订单超时
      */
-    orderInfo: null
+    orderInfo: null,
+    markers: []
   },
 
   /**
@@ -43,6 +44,10 @@ Page({
         res.data.img = res.data.imgs && res.data.imgs.split(',')[0]
         that.setData({
           orderInfo: res.data,
+          markers: [{
+            longitude: res.data.lng,
+            latitude: res.data.lat
+          }]
         })
       }
     })
@@ -156,6 +161,12 @@ Page({
           longitude: Number(that.data.orderInfo.lng),//要去的经度-地址
           name: '取货地址',
           address: that.data.orderInfo.address
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '请开启GPS位置信息来使用此功能',
+          icon: none
         })
       }
     })

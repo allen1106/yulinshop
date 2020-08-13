@@ -38,6 +38,9 @@ Page({
     // 获取提现列表
     api.phpRequest({
       url: 'withdrawallist.php',
+      data: {
+        userid: wx.getStorageSync('userId')
+      },
       success: function (res) {
         that.setData({
           withdrawList: res.data

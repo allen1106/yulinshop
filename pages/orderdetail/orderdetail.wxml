@@ -19,7 +19,7 @@
       <view class="title">联系电话：{{orderInfo.phone}}</view>
       <view>联系地址：{{orderInfo.address}}</view>
       <view>地图定位：</view>
-      <map id="map" longitude="{{orderInfo.lng}}" latitude="{{orderInfo.lat}}" scale="14" show-location style="width: 100%; height: 150px;" bindtap="bindOpenLoc"></map>
+      <map id="map" longitude="{{orderInfo.lng}}" latitude="{{orderInfo.lat}}" scale="14" show-location style="width: 100%; height: 200px;" bindtap="bindOpenLoc" markers="{{markers}}"></map>
     </view>
     <view class="btn-wrapper">
       <button class="bg-orange" bindtap="bindContact">马上联系</button>

@@ -28,7 +28,7 @@
     <button class="button orange-btn" bindtap="_bindPurchase">购买</button>
     <button class="button green-btn" bindtap="_bindCollect">收藏</button>
   </view>
-  <view class="btn-wrapper" wx:if="{{isClient == 0}}">
+  <view class="btn-wrapper" wx:if="{{isClient == 0 && itemInfo.products_status == 0}}">
     <button class="button green-btn" bindtap="_bindDelete">删除</button>
     <button class="button orange-btn" bindtap="_bindEdit">编辑</button>
   </view>
