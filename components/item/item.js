@@ -90,6 +90,11 @@ Component({
             wx.navigateTo({
               url: '/pages/buyitem/buyitem?orderid=' + res.data.orderid,
             })
+          } else if (res.data.status == 2) {
+            wx.showToast({
+              title: '无法购买自己发布的商品',
+              icon: 'none'
+            })
           } else {
             wx.showToast({
               title: '收藏失败，请重试',
