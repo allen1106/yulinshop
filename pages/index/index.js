@@ -63,6 +63,10 @@ Page({
         })
       }
     })
+  },
+
+  onShow: function (e) {
+    var that = this
     // 检索商品列表
     api.phpRequest({
       url: 'products.php',

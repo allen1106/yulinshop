@@ -97,7 +97,7 @@ Component({
             })
           } else {
             wx.showToast({
-              title: '收藏失败，请重试',
+              title: '购买失败，请重试',
               icon: 'none'
             })
           }
