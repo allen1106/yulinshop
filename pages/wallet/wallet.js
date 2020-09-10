@@ -49,8 +49,9 @@ Page({
     })
   },
   navigateToWithdraw: function (e) {
+    var that = this
     wx.navigateTo({
-      url: '/pages/withdraw/withdraw',
+      url: '/pages/withdraw/withdraw?balance=' + that.data.userInfo.money,
     })
   }
 })

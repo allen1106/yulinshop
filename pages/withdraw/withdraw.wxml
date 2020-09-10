@@ -3,6 +3,7 @@
   <form bindsubmit="bindSubmitForm">
   <view class="form-wrapper">
     <input name="money" placeholder="输入提现金额"></input>
+    <view class="balance">当前余额¥{{balance}}</view>
     <view class="label">上传收款二维码图片</view>
     <view class="img-upload-container">
       <view class="img-preview-container" wx:for="{{imgList}}" wx:key="index">

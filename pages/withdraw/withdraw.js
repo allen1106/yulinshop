@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    balance: 0,
     money: 0,
     imgCount: 1,
     imgList: [],
@@ -16,7 +17,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    console.log(options)
+    that.setData({
+      balance: options.balance
+    })
   },
 
   chooseImage: function (e) {

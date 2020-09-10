@@ -81,3 +81,9 @@
   color: #6A6A6A;
   font-size: 24rpx;
 }
+
+.balance {
+  color: #bbb;
+  font-size: 24rpx;
+  margin: 20rpx 0;
+}
